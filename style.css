@@ -1,0 +1,142 @@
+*{
+    border: 1px solid red;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-between;
+    align-items: center;
+    background-color: grey;
+}
+
+.header img{
+    border-radius: 4px;
+    height: 50px;
+}
+
+.preview{
+    display: flex;
+    flex-direction: row;
+}
+
+.preview-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.preview-heading{
+    display: flex;
+    font-weight: bold;
+    font-size: 42px;
+    font-style: italic;
+    text-align: center;
+}
+.preview-text{
+    display: flex;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+}
+
+.buy-button{
+    display: flex;
+    
+    border: 2px solid black;
+    background-color: #4da72a;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.cards{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+.card-header{
+    text-align: center;
+    font-size: 28px;
+}
+.card-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; 
+}
+
+.card img{
+    height: 100px;
+
+}
+
+.quote-container{
+    background-color: rgb(197, 197, 197);
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+.quote{
+    font-family: cursive;
+    font-size: 40px;
+    text-align: center;
+}
+
+.quote-person{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buy-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.buy-words-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.browse{
+    background-color: lightskyblue ;
+    text-align: center;
+    font-size: 42px;
+}
+
+a{
+    text-decoration: none;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    list-style: none;
+}
+
+footer{
+    background-color: rgb(37, 37, 37);
+    margin-top: 30px;
+    height: 20px; 
+    color: white;
+    font-family: fantasy;
+    text-align: center;
+}
