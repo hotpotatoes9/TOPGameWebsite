@@ -1,10 +1,9 @@
-let playerChoice;
-let computerChoice;
-
+let iPlayerScore = 0;
+let iComputerScore = 0;
 
 function computerChooses(){
     let randomNumber = Math.random();
-    console.log(randomNumber);
+    
     if (randomNumber < 0.333){
         return 'rock';
     }
@@ -18,65 +17,100 @@ function computerChooses(){
 
 
 
-function getPlayerChoice(){
-    while(playerChoice == false){
-        playerChoice =  prompt("what will you choose?");
-        playerChoice = playerChoice.toLowerCase();
-        if (playerChoice == "rock" || playerChoice == 'scissors'||playerChoice == 'paper'){
-            return playerChoice
-        }
-        else{
-            alert("i did not understand your selection");
-            playerChoice = false;
-        }
-    
-    }
-}
+function playRound(playerChoice){
 
-function playRound(computerChoice, playerChoice){
+    
+    let computerChoice = computerChooses();
+    let score = 0;
+    let message;
+
     if (playerChoice == 'paper'){
         switch(computerChoice){
             case 'paper' :
-                alert("tie! Both papers");
+                message = "tie! Both papers";
                 break;
             case 'scissors':
-                alert("You lose! scissors cuts paper");
+                message = "You lose! scissors cuts paper";
+                score = -1;
                 break;
             default:
-                alert ("victory! Your paper wraps rock!");
+                score = 1;
+                message = "victory! Your paper wraps rock!";
         }
     }
     else if (playerChoice == 'scissors'){
         switch(computerChoice){
             case 'paper' :
-                alert("win! You sliced the competition");
+                message = "win! You sliced the competition";
+                score = 1;
                 break;
             case 'scissors':
-                alert("Tie!");
+                message = "Tie!";
                 break;
             default:
-                alert ("NOOOO! You were rocked!");
+                message = "NOOOO! You were rocked!";
+                score = -1;
         }
     }
     else if (playerChoice == 'rock'){
         switch(computerChoice){
             case 'paper' :
-                alert("You were wrapped:(");
+                message = "You were wrapped:(";
+                score = -1;
                 break;
             case 'scissors':
-                alert("YAS! Rock the scissors!");
+                message = "YAS! Rock the scissors!";
+                score = 1;
                 break;
             default:
-                alert ("Tie!");
+                message = ("Tie!");
         }
+    }
+    else{
+        console.log(playerChoice);
+    }
+    updateMessge(message, score);
+
+}
+
+function updateMessge(message, score){
+    //update once - latest updates
+    const roundResult = document.querySelector("#round-result");
+    const computerScore = document.querySelector("#computer-score");
+    const playerScore = document.querySelector("#player-score");
+
+    roundResult.textContent = message;
+    //update continuously - scoreboard
+
+    if (score == 1){
+        iPlayerScore ++;
+    }
+    else if (score == -1){
+        iComputerScore ++;
+    }
+    playerScore.textContent = `You: ${iPlayerScore}`;
+    computerScore.textContent = `Computer: ${iComputerScore}`;
+    if (iPlayerScore>4){
+        roundResult.textContent += " YOU WON!! :D";
+        iPlayerScore = 0;
+        iComputerScore = 0;
+    }
+    if (iComputerScore > 4){
+        roundResult.textContent += " YOU LOST! D:";
+        iPlayerScore = 0;
+        iComputerScore = 0;
     }
 }
 
-for (let round = 0; round< 5; round ++){
-    playerChoice = false;
-    computerChoice = false;
-    computerChoice = computerChooses();
-    //note that computer must choose first
-    playRound(computerChoice, getPlayerChoice());
-    
+let print = function(string){
+    console.log(string);
 }
+
+
+let buttons = document.querySelectorAll(".game");
+buttons.forEach(button => {
+    button.addEventListener('click',()=>{
+        playRound(button.id);
+    });
+});
+
